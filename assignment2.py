@@ -11,7 +11,7 @@ edges=[]
 
 def BellmanFord(G):
     pathPairs=[]
-    for u in G[0]:
+    #for u in G[0]:
 
     # Fill in your Bellman-Ford algorithm here
     # The pathPairs list will contain the list of vertex pairs and their weights [((s,t),w),...]
@@ -55,8 +55,8 @@ def readFile(filename):
             weight=edgeMatch.group(3)
             edges[int(source)-1][int(sink)-1]=weight
     #Debugging
-    #for i in G:
-        #print(i)
+    for i in edges:
+        print(i)
     return (vertices,edges)
 
 def main(filename,algorithm):
