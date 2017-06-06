@@ -1,6 +1,7 @@
 import sys
 import re
 import time
+import math
 
 graphRE=re.compile("(\\d+)\\s(\\d+)")
 edgeRE=re.compile("(\\d+)\\s(\\d+)\\s(-?\\d+)")
@@ -10,6 +11,8 @@ edges=[]
 
 def BellmanFord(G):
     pathPairs=[]
+    for u in G[0]:
+
     # Fill in your Bellman-Ford algorithm here
     # The pathPairs list will contain the list of vertex pairs and their weights [((s,t),w),...]
     return pathPairs
