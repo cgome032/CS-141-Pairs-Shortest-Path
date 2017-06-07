@@ -53,10 +53,10 @@ def readFile(filename):
                 print("Attempting to insert an edge between "+source+" and "+sink+" in a graph with "+vertices+" vertices")
                 quit(1)
             weight=edgeMatch.group(3)
-            edges[int(source)-1][int(sink)-1]=weight
+            edges[int(source)][int(sink)]=weight
     #Debugging
-    for i in edges:
-        print(i)
+    #for i in edges:
+        #print(i)
     return (vertices,edges)
 
 def main(filename,algorithm):
