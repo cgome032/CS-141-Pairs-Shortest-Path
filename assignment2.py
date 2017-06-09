@@ -19,9 +19,9 @@ def BellmanFord(G):
             vertexPairs.append([(source,sink), math.inf])
         pathPairs.append(vertexPairs);
         pathPairs[source][source][1] = 0
-        print("Debugging for vertex:",source)
-        for x in pathPairs[source]:
-            print(x)
+        #print("Debugging for vertex:",source)
+        #for x in pathPairs[source]:
+        #    print(x)
         #for i in range(1,len(vertices)-1):
         #    print("Printing i",i)
         for j in range(len(edges)):
@@ -32,19 +32,21 @@ def BellmanFord(G):
                 #print("Printing k",k)
                 if pathPairs[source][k][1] > pathPairs[source][j][1] + float(edges[j][k]):
                     pathPairs[source][k][1] = pathPairs[source][j][1] + float(edges[j][k])
-        print("Printing PathPairs:")
-        for i in pathPairs[source]:
-            print (i)
+        #print("Printing PathPairs:")
+        #for i in pathPairs[source]:
+        #    print (i)
 
         # Check for negative cycle
         for u in range(len(edges)):
             for v in range(len(edges)):
                 if pathPairs[source][v][1] > pathPairs[source][u][1] + float(edges[u][v]):
                     print("There is a negative cycle")
-                    return False
+                    #return False
 
     # Fill in your Bellman-Ford algorithm here
     # The pathPairs list will contain the list of vertex pairs and their weights [((s,t),w),...]
+    for i in pathPairs:
+        print(i)
     return (pathPairs)
 
 def FloydWarshall(G):
