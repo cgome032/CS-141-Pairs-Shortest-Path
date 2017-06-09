@@ -1,6 +1,7 @@
 import sys
 import re
 import time
+
 import math
 
 graphRE=re.compile("(\\d+)\\s(\\d+)")
@@ -12,10 +13,39 @@ edges=[]
 def BellmanFord(G):
     pathPairs=[]
     #for u in G[0]:
+    for source in vertices:
+        vertexPairs = []
+        for sink in vertices:
+            vertexPairs.append([(source,sink), math.inf])
+        pathPairs.append(vertexPairs);
+        pathPairs[source][source][1] = 0
+        print("Debugging for vertex:",source)
+        for x in pathPairs[source]:
+            print(x)
+        #for i in range(1,len(vertices)-1):
+        #    print("Printing i",i)
+        for j in range(len(edges)):
+            # Debugging purposes
+            #print("Printing j",j)
+            for k in range(len(edges)):
+                #Debugging purposes
+                #print("Printing k",k)
+                if pathPairs[source][k][1] > pathPairs[source][j][1] + float(edges[j][k]):
+                    pathPairs[source][k][1] = pathPairs[source][j][1] + float(edges[j][k])
+        print("Printing PathPairs:")
+        for i in pathPairs[source]:
+            print (i)
+
+        # Check for negative cycle
+        for u in range(len(edges)):
+            for v in range(len(edges)):
+                if pathPairs[source][v][1] > pathPairs[source][u][1] + float(edges[u][v]):
+                    print("There is a negative cycle")
+                    return False
 
     # Fill in your Bellman-Ford algorithm here
     # The pathPairs list will contain the list of vertex pairs and their weights [((s,t),w),...]
-    return pathPairs
+    return (pathPairs)
 
 def FloydWarshall(G):
     pathPairs=[]
@@ -55,8 +85,12 @@ def readFile(filename):
             weight=edgeMatch.group(3)
             edges[int(source)][int(sink)]=weight
     #Debugging
-    #for i in edges:
-        #print(i)
+    print("Printing vertices")
+    for i in vertices:
+        print(i)
+    print("Printing edges")
+    for i in edges:
+        print(i)
     return (vertices,edges)
 
 def main(filename,algorithm):
