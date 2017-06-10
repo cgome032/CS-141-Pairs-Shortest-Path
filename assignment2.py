@@ -41,7 +41,7 @@ def BellmanFord(G):
             for v in range(len(edges)):
                 if pathPairs[source][v][1] > pathPairs[source][u][1] + float(edges[u][v]):
                     print("There is a negative cycle")
-                    #return False
+                    return False
 
     # Fill in your Bellman-Ford algorithm here
     # The pathPairs list will contain the list of vertex pairs and their weights [((s,t),w),...]
